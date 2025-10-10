@@ -8,6 +8,7 @@ import { type Site } from './types'
 // include UUIDs in page URLs during local development but not in production
 // (they're nice for debugging and speed up local dev)
 const uuid = !!includeNotionIdInUrls;
+const basePath = "/blog";
 
 export const mapPageUrl =
   (site: Site, recordMap: ExtendedRecordMap, searchParams: URLSearchParams) =>
@@ -18,7 +19,7 @@ export const mapPageUrl =
         return createUrl('/', searchParams)
       } else {
         return createUrl(
-          `/${getCanonicalPageId(pageUuid, recordMap, { uuid })}`,
+          `${basePath}/${getCanonicalPageId(pageUuid, recordMap, { uuid })}`,
           searchParams
         )
       }
