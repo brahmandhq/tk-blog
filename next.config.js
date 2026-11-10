@@ -11,6 +11,9 @@ const withBundleAnalyzer = bundleAnalyzer({
 export default withBundleAnalyzer({
   staticPageGenerationTimeout: 300,
   images: {
+    // Notion's image proxy answers 403 to the optimizer's server-side fetch,
+    // so let browsers load images straight from Notion.
+    unoptimized: true,
     remotePatterns: [
       { protocol: 'https', hostname: 'www.notion.so' },
       { protocol: 'https', hostname: 'notion.so' },
